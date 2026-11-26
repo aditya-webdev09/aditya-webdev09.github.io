@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Royal Plate – A Taste of Elegance (Demo)</title>
+<meta name="description" content="The Royal Plate is a demo restaurant website built for a web development portfolio.">
+<meta property="og:title" content="The Royal Plate – Demo restaurant website">
+<meta property="og:description" content="A Taste of Elegance. Portfolio demo with menu, gallery and reservation form.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#090909;--bg2:#151515;--gold:#C8A45D;--gold2:#E5C98C;--tx:#F7F4ED;--tx2:#B9B4AA;--bd:#35312A;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(70px + env(safe-area-inset-top,0px))}
+body{background:var(--bg);color:var(--tx);font:400 16px/1.65 Inter,system-ui,sans-serif;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:40}
+h1,h2,h3,.logo{font-family:'Playfair Display',Georgia,serif;font-weight:700;line-height:1.2}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:3px}
+.wrap{max-width:1100px;margin:auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:rgba(9,9,9,.95);border-bottom:1px solid var(--bd)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:1.2rem;color:var(--gold2);letter-spacing:.04em}
+.links{display:flex;gap:20px;align-items:center;font-size:.92rem;color:var(--tx2)}
+.links a:hover{color:var(--gold2)}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;border:1px solid var(--gold);color:var(--gold2);background:none;cursor:pointer;font:600 .95rem Inter,sans-serif;transition:background .2s,color .2s}
+.btn:hover{background:var(--gold);color:#111}
+.btn.fill{background:var(--gold);color:#111}.btn.fill:hover{background:var(--gold2)}
+#burger{display:none;background:none;border:1px solid var(--bd);color:var(--tx);border-radius:10px;width:44px;height:44px;font-size:1.3rem;cursor:pointer}
+@media(max-width:900px){#burger{display:block}.links{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg2);padding:10px 20px 20px;border-bottom:1px solid var(--bd)}.links.open{display:flex}.links a{padding:12px 0}.links .btn{text-align:center;margin-top:8px}}
+section{padding:76px 0}
+.alt{background:var(--bg2)}
+h2{font-size:clamp(1.8rem,5vw,2.6rem);margin-bottom:14px}
+.sub{color:var(--tx2);max-width:60ch;margin-bottom:32px}
+#home{min-height:86vh;display:flex;align-items:center;background:radial-gradient(circle at 78% 28%,#2b2215 0,#090909 62%)}
+#home h1{font-size:clamp(2.6rem,9vw,5.2rem);color:var(--gold2)}
+#home .tag{font:italic 500 1.4rem 'Playfair Display',serif;margin:10px 0 18px}
+#home p{color:var(--tx2);max-width:52ch}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin:26px 0 20px}
+.note{font-size:.82rem;color:var(--tx2)}
+.demo{border:1px dashed var(--gold);color:var(--gold2);border-radius:10px;padding:10px 14px;font-size:.88rem;margin-bottom:26px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.art{aspect-ratio:4/3;border-radius:16px;border:1px solid var(--bd);background:linear-gradient(135deg,#1d1810,#0e0c08);display:flex;align-items:center;justify-content:center;font-size:5rem}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.chip{border:1px solid var(--bd);background:none;color:var(--tx2);padding:9px 16px;border-radius:999px;cursor:pointer;font:500 .9rem Inter,sans-serif}
+.chip[aria-pressed=true]{background:var(--gold);color:#111;border-color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{background:var(--bg2);border:1px solid var(--bd);border-radius:14px;overflow:hidden}
+.alt .card{background:var(--bg)}
+.ph{height:92px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;background:#1c1810}
+.cb{padding:16px}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.row h3{font-size:1.08rem}.price{color:var(--gold2);font-weight:600;white-space:nowrap}
+.cb p{color:var(--tx2);font-size:.9rem;margin-top:6px}
+.meta{display:flex;gap:8px;align-items:center;margin-top:10px;font-size:.78rem;color:var(--tx2)}
+.veg{width:14px;height:14px;border:2px solid #3fa35a;display:inline-flex;align-items:center;justify-content:center}.veg::after{content:"";width:6px;height:6px;border-radius:50%;background:#3fa35a}
+.offer{padding:22px}.offer h3{color:var(--gold2);margin-bottom:6px}.offer p{color:var(--tx2);font-size:.92rem}
+.gal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.tile{aspect-ratio:1;border:1px solid var(--bd);border-radius:14px;background:linear-gradient(135deg,#221c11,#0e0c08);color:var(--tx);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font:500 .85rem Inter,sans-serif}
+.tile span{font-size:2.4rem}.tile:hover{border-color:var(--gold)}
+@media(max-width:600px){.gal{grid-template-columns:repeat(2,1fr)}}
+.av{width:64px;height:64px;border-radius:50%;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;font:700 1.3rem 'Playfair Display',serif;color:var(--gold2);margin-bottom:12px}
+.stars{color:var(--gold);letter-spacing:2px}
+form{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px}
+form .full{grid-column:1/-1}
+label{display:block;font-size:.9rem;margin-bottom:6px;color:var(--tx2)}
+input,select,textarea{width:100%;background:var(--bg2);border:1px solid var(--bd);border-radius:10px;color:var(--tx);padding:12px;font:inherit}
+input:focus,select:focus,textarea:focus{border-color:var(--gold)}
+.err{color:#ef8f7a;font-size:.82rem;min-height:1.1em;display:block;margin-top:4px}
+@media(max-width:600px){form{grid-template-columns:1fr}}
+#done{display:none;max-width:560px;border:1px solid var(--gold);border-radius:16px;padding:28px;background:var(--bg2)}
+#done h3{color:var(--gold2);margin-bottom:10px}
+.info{display:grid;gap:10px;color:var(--tx2)}.info b{color:var(--tx)}
+footer{border-top:1px solid var(--bd);padding:44px 0 90px;color:var(--tx2);font-size:.9rem}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:28px;margin-bottom:24px}
+@media(max-width:700px){.fgrid{grid-template-columns:1fr}}
+.fgrid a{display:block;padding:3px 0}.fgrid a:hover{color:var(--gold2)}
+.soc{display:flex;gap:10px;margin-top:12px}.soc button{border:1px solid var(--bd);background:none;color:var(--tx);border-radius:999px;padding:8px 14px;cursor:pointer;font:inherit;font-size:.85rem}
+#top{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));width:46px;height:46px;border-radius:50%;border:1px solid var(--gold);background:var(--bg);color:var(--gold2);font-size:1.2rem;cursor:pointer;display:none;z-index:20}
+#lb{position:fixed;inset:0;background:rgba(0,0,0,.92);display:none;align-items:center;justify-content:center;flex-direction:column;gap:14px;z-index:50;padding:20px}
+#lb .big{font-size:9rem}#lb p{font:700 1.4rem 'Playfair Display',serif;color:var(--gold2)}
+#toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(76px + env(safe-area-inset-bottom,0px));background:var(--gold);color:#111;padding:10px 16px;border-radius:10px;font-size:.88rem;display:none;z-index:60;max-width:90vw}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style></head><body>
+<header><div class="wrap"><a class="logo" href="#home">🍽 The Royal Plate</a>
+<button id="burger" aria-label="Open menu" aria-expanded="false">☰</button>
+<nav class="links" id="links" aria-label="Main"><a href="#home">Home</a><a href="#about">About</a><a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#chefs">Our Chefs</a><a href="#reviews">Reviews</a><a href="#contact">Contact</a><a class="btn fill" href="#reserve">Reserve a Table</a></nav></div></header>
+<main>
+<section id="home"><div class="wrap"><h1>The Royal Plate</h1><p class="tag">A Taste of Elegance.</p>
+<p>Indian and contemporary dining, cooked slowly and served with care. Browse the menu, then book your table for an evening to remember.</p>
+<div class="cta"><a class="btn fill" href="#menu">Explore Our Menu</a><a class="btn" href="#reserve">Reserve a Table</a></div>
+<p class="note">Sample hours: Daily, 12:00 – 23:00 (demo information)</p></div></section>
+
+<section id="about"><div class="wrap two"><div><h2>More Than Just Dining</h2>
+<p style="color:var(--tx2);margin-bottom:12px">The Royal Plate is a fictional restaurant, created to show how a real restaurant website can look and work. Its story is invented for this demo.</p>
+<p style="color:var(--tx2);margin-bottom:12px">The kitchen’s idea is simple: fresh ingredients, patient cooking and generous portions. Gravies simmer for hours, breads come straight from the tandoor, and every plate is finished by hand.</p>
+<p style="color:var(--tx2)">The dining room is warm, quiet and made for long dinners with family and friends.</p></div>
+<div class="art" role="img" aria-label="Illustration of a plated meal">🍛</div></div></section>
+
+<section id="menu" class="alt"><div class="wrap"><h2>Our Menu</h2>
+<p class="demo">Demo notice: every dish and price on this page is illustrative sample data.</p>
+<div class="chips" id="chips" role="group" aria-label="Menu categories"></div><div class="grid" id="mgrid"></div></div></section>
+
+<section id="offers"><div class="wrap"><h2>Special Offers</h2><p class="sub">Sample promotions for the demo. They are not real offers.</p>
+<div class="grid"><div class="card offer"><h3>Family Dining Special</h3><p>Four mains, breads and dessert, shared at one table for a set price.</p></div>
+<div class="card offer"><h3>Weekday Lunch Special</h3><p>A quick two-course lunch, served Monday to Friday before 3 pm.</p></div>
+<div class="card offer"><h3>Dessert Special</h3><p>Add any dessert for half price when you order two mains.</p></div></div>
+<div class="cta"><a class="btn fill" href="#menu">Explore Menu</a></div></div></section>
+
+<section id="gallery" class="alt"><div class="wrap"><h2>Gallery</h2><p class="sub">Tap any tile to view it larger. Illustrated placeholders stand in for photography in this demo.</p><div class="gal" id="gal"></div></div></section>
+
+<section id="chefs"><div class="wrap"><h2>Our Chefs</h2><p class="sub">Fictional demo profiles.</p><div class="grid" id="chefgrid"></div></div></section>
+
+<section id="reviews" class="alt"><div class="wrap"><h2>Guest Reviews</h2><p class="demo">These are fictional sample testimonials, not verified customer feedback.</p><div class="grid" id="revgrid"></div></div></section>
+
+<section id="reserve"><div class="wrap"><h2>Reserve a Table</h2>
+<p class="demo">Demo only: this booking is simulated. Nothing is sent to a restaurant, and your details never leave this page.</p>
+<form id="rf" novalidate>
+<div><label for="n">Full name</label><input id="n" autocomplete="name"><span class="err" id="e-n"></span></div>
+<div><label for="em">Email</label><input id="em" type="email" autocomplete="email"><span class="err" id="e-em"></span></div>
+<div><label for="ph">Phone number</label><input id="ph" type="tel" placeholder="10-digit mobile" autocomplete="tel"><span class="err" id="e-ph"></span></div>
+<div><label for="g">Guests</label><select id="g"></select><span class="err"></span></div>
+<div><label for="d">Date</label><input id="d" type="date"><span class="err" id="e-d"></span></div>
+<div><label for="t">Time</label><select id="t"></select><span class="err"></span></div>
+<div class="full"><label for="s">Special requests (optional)</label><textarea id="s" rows="3"></textarea></div>
+<div class="full"><button class="btn fill" type="submit">Request Reservation</button></div></form>
+<div id="done" role="status" tabindex="-1"><h3>Demo reservation received</h3><p id="dtxt" style="color:var(--tx2)"></p><p class="note" style="margin:12px 0">This was a simulation. No booking was made and no data was sent anywhere.</p><button class="btn" id="again">Make another demo booking</button></div></div></section>
+
+<section id="contact" class="alt"><div class="wrap"><h2>Contact</h2><p class="demo">All details below are fictional and for demonstration only.</p>
+<div class="info"><p><b>The Royal Plate (Demo)</b></p><p><b>Location:</b> Illustrative location, Demo City, India</p><p><b>Hours:</b> Daily, 12:00 – 23:00 (sample)</p><p><b>Phone:</b> +91 00000 00000 (demo number)</p><p><b>Email:</b> demo@example.com (demo address)</p></div>
+<div class="cta"><a class="btn fill" href="tel:+910000000000">Call (demo number)</a><a class="btn" href="mailto:demo@example.com">Email (demo address)</a></div></div></section>
+</main>
+<footer><div class="wrap"><div class="fgrid"><div><span class="logo">🍽 The Royal Plate</span><p style="margin-top:8px">A Taste of Elegance. Premium Indian and contemporary dining.</p>
+<div class="soc"><button data-s>Instagram</button><button data-s>Facebook</button><button data-s>YouTube</button></div></div>
+<div><b style="color:var(--tx)">Explore</b><a href="#about">About</a><a href="#menu">Menu</a><a href="#gallery">Gallery</a><a href="#reviews">Reviews</a></div>
+<div><b style="color:var(--tx)">Visit</b><a href="#reserve">Reserve a Table</a><a href="#contact">Contact</a><a href="#offers">Offers</a></div></div>
+<p class="note">© 2026 The Royal Plate. Portfolio demo website. The restaurant, menu, prices, reviews and contact details are fictional.</p></div></footer>
+<button id="top" aria-label="Back to top">↑</button>
+<div id="lb" role="dialog" aria-modal="true" aria-label="Image viewer"><div class="big" id="lbi"></div><p id="lbt"></p><button class="btn" id="lbx">Close</button></div>
+<div id="toast" role="status"></div>
+<script>
+var $=function(i){return document.getElementById(i)};
+var cats=[["Starters","🍢"],["Soups","🍲"],["Main Course","🍛"],["Indian Specialities","🥘"],["Breads","🫓"],["Rice and Biryani","🍚"],["Desserts","🍮"],["Beverages","🥤"]];
+var M="0|Paneer Tikka|249|Char-grilled cottage cheese in spiced yogurt;0|Hara Bhara Kebab|199|Spinach and pea patties with mint chutney;0|Veg Spring Rolls|179|Crisp rolls filled with seasoned vegetables;0|Crispy Corn|189|Golden corn tossed with pepper and herbs;1|Tomato Soup|129|Slow-cooked tomato finished with basil;1|Sweet Corn Soup|149|Creamy corn with spring onion;1|Manchow Soup|159|Hot and savoury, topped with crisp noodles;2|Paneer Butter Masala|299|Paneer in a silky tomato and butter gravy;2|Dal Makhani|249|Black lentils simmered overnight with cream;2|Kadai Paneer|289|Paneer and peppers in freshly ground kadai masala;2|Mix Veg Curry|239|Seasonal vegetables in a home-style gravy;3|Shahi Paneer|319|Paneer in a rich cashew and cream gravy;3|Malai Kofta|299|Soft dumplings in a saffron-tinged sauce;3|Chole Masala|229|Chickpeas in a tangy, spiced gravy;4|Butter Naan|55|Tandoor-baked and brushed with butter;4|Garlic Naan|75|Naan with roasted garlic and coriander;4|Tandoori Roti|25|Whole-wheat flatbread from the tandoor;4|Laccha Paratha|65|Flaky, layered whole-wheat bread;5|Veg Biryani|249|Fragrant basmati layered with vegetables;5|Jeera Rice|149|Basmati rice tempered with cumin;5|Steamed Rice|119|Plain long-grain basmati;6|Gulab Jamun|99|Warm milk dumplings in rose syrup;6|Brownie with Ice Cream|159|Warm chocolate brownie with a vanilla scoop;6|Kulfi|89|Traditional slow-set frozen dessert;7|Fresh Lime Soda|79|Sweet or salted, served over ice;7|Cold Coffee|129|Chilled, blended and creamy;7|Masala Chai|49|Spiced milk tea, brewed fresh;7|Fresh Lime Water|59|Fresh lime, lightly sweetened";
+M=M.split(";").map(function(x){var p=x.split("|");return{c:+p[0],n:p[1],p:p[2],d:p[3]}});
+var cur="All";
+function renderMenu(){var h="";M.forEach(function(m){if(cur!=="All"&&cats[m.c][0]!==cur)return;h+='<article class="card"><div class="ph" aria-hidden="true">'+cats[m.c][1]+'</div><div class="cb"><div class="row"><h3>'+m.n+'</h3><span class="price">₹'+m.p+'</span></div><p>'+m.d+'</p><div class="meta"><span class="veg" title="Vegetarian" aria-label="Vegetarian"></span><span>Vegetarian</span><span>· '+cats[m.c][0]+'</span></div></div></article>'});$("mgrid").innerHTML=h;
+document.querySelectorAll(".chip").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.c===cur)})}
+var ch='<button class="chip" data-c="All">All</button>';cats.forEach(function(c){ch+='<button class="chip" data-c="'+c[0]+'">'+c[0]+'</button>'});$("chips").innerHTML=ch;
+$("chips").onclick=function(e){if(e.target.dataset.c){cur=e.target.dataset.c;renderMenu()}};renderMenu();
+var G=[["🍛","Indian cuisine"],["🏛","Restaurant interior"],["🍽","Food presentation"],["🍮","Desserts"],["🕯","Dining atmosphere"],["🔥","The tandoor"]];
+$("gal").innerHTML=G.map(function(g,i){return'<button class="tile" data-i="'+i+'" aria-label="View '+g[1]+'"><span>'+g[0]+'</span>'+g[1]+'</button>'}).join("");
+var lastTile;function openLb(i){lastTile=document.activeElement;$("lbi").textContent=G[i][0];$("lbt").textContent=G[i][1];$("lb").style.display="flex";$("lbx").focus()}
+function closeLb(){$("lb").style.display="none";if(lastTile)lastTile.focus()}
+$("gal").onclick=function(e){var t=e.target.closest(".tile");if(t)openLb(+t.dataset.i)};$("lbx").onclick=closeLb;$("lb").onclick=function(e){if(e.target===$("lb"))closeLb()};
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeLb();nav(false)}});
+var C=[["AM","Chef Aarav (demo)","Tandoor and grills","Leads the tandoor station and the starters menu."],["MR","Chef Meera (demo)","Curries and slow cooking","Builds the gravies and dals that anchor the main courses."],["KS","Chef Kabir (demo)","Desserts and pastry","Plans the dessert menu and the seasonal specials."]];
+$("chefgrid").innerHTML=C.map(function(c){return'<div class="card cb"><div class="av" aria-hidden="true">'+c[0]+'</div><h3>'+c[1]+'</h3><p style="color:var(--gold2);margin:2px 0">'+c[2]+'</p><p>'+c[3]+'</p></div>'}).join("");
+var R=[["Sample guest, Riya","The dal was rich and the naan arrived hot. A relaxed evening."],["Sample guest, Karan","Generous portions and calm service. We would book again."],["Sample guest, Neha","The kulfi was the highlight of a very good family dinner."]];
+$("revgrid").innerHTML=R.map(function(r){return'<div class="card cb"><div class="stars" aria-label="5 out of 5 stars">★★★★★</div><p style="color:var(--tx);margin:8px 0">“'+r[1]+'”</p><p class="note">'+r[0]+' (fictional)</p></div>'}).join("");
+function nav(o){$("links").classList.toggle("open",o);$("burger").setAttribute("aria-expanded",o);$("burger").textContent=o?"✕":"☰"}
+$("burger").onclick=function(){nav(!$("links").classList.contains("open"))};$("links").onclick=function(e){if(e.target.tagName==="A")nav(false)};
+window.onscroll=function(){$("top").style.display=scrollY>500?"block":"none"};$("top").onclick=function(){scrollTo({top:0})};
+var tm;function toast(m){var t=$("toast");t.textContent=m;t.style.display="block";clearTimeout(tm);tm=setTimeout(function(){t.style.display="none"},2600)}
+document.querySelectorAll("[data-s]").forEach(function(b){b.onclick=function(){toast("Demo link: this is not a real "+b.textContent+" account.")}});
+var gs="";for(var i=1;i<=12;i++)gs+='<option value="'+i+'">'+i+(i>1?" guests":" guest")+'</option>';$("g").innerHTML=gs;
+var ts="";["12:00","13:00","14:00","15:00","19:00","20:00","21:00","22:00"].forEach(function(t){ts+='<option>'+t+'</option>'});$("t").innerHTML=ts;
+var now=new Date(),td=now.getFullYear()+"-"+String(now.getMonth()+1).padStart(2,"0")+"-"+String(now.getDate()).padStart(2,"0");$("d").min=td;$("d").value=td;
